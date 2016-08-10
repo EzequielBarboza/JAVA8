@@ -41,7 +41,7 @@ public class GapsInBinary {
 			} else {
 				theWord.add(theChar);
 			}
-			if(theWord.finished){
+			if(theWord.started && theWord.finished){
 				if(theWord.size > 0){
 					wordList.add(theWord);
 				}
