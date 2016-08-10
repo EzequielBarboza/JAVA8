@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="pluralsight_CorePlatform:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/pluralsight_CorePlatform_jar</output-path>
+    <root id="archive" name="pluralsight_CorePlatform.jar">
+      <element id="module-output" name="pluralsight_CorePlatform" />
+    </root>
+  </artifact>
+</component>
