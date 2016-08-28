@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * Created by ezequiel on 04/08/16.
  */
-public class Adder {
+public class Adder implements Runnable{
 
 	private String inFile, outFile;
 	
@@ -33,16 +33,32 @@ public class Adder {
 		}
 	}
 	
-	
+	@Override
+	public void run() {
+		try {
+			doAdd();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
 	public static void main(String[] args) {
 		String inFiles[] = {"./file1.txt", "./file2.txt", "./file3.txt", "./file4.txt", "./file5.txt", "./file6.txt"};
 		String outFiles[] = {"./file1.out.txt", "./file2.out.txt", "./file3.out.txt", "./file4.out.txt", "./file5.out.txt", "./file6.out.txt"};
 		
+		Thread [] threads = new Thread[inFiles.length];
+		
 		for (int i = 0; i < inFiles.length; i++) {
+			Adder adder = new Adder(inFiles[i], outFiles[i]);
+			threads[i] = new Thread(adder);
+			threads[i].start();
+		}
+		
+		for (Thread thread : threads) {
 			try {
-				Adder adder = new Adder(inFiles[i], outFiles[i]);
-				adder.doAdd();
-			} catch (IOException e) {
+				thread.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
