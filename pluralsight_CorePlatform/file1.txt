@@ -1,4 +1,0 @@
-one new approach regarding
-the development of distributed systems
-is being developed by the architects that
-are inventing news ways of systems to interact
